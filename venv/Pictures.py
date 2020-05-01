@@ -3,9 +3,9 @@ from tkinter.filedialog import *
 from tkinter.simpledialog import *
 
 def func_open() :
-    filename = askopenfilename(parent=window, filetypes = (("GIF 파일", "*.gif"), ("모든 파일", "*,*")))
+    filename = askopenfilename(parent=window, filetypes = (("GIF 파일", "*.gif"), ("모든 파일", "*.*")))
     photo = PhotoImage(file=filename)
-    pLabel.configure(image_photo)
+    pLabel.configure(image=photo)
     pLabel.image = photo
 
 def func_exit() :
@@ -25,7 +25,7 @@ def func_reduce() :
     pLabel.image = photo
 
 window = Tk()
-window.germetry("400x400")
+window.geometry("400x400")
 
 window.title("명화 감상하기")
 
@@ -44,8 +44,8 @@ fileMenu.add_command(label = "프로그램 종료", command = func_exit)
 
 imageMenu = Menu(mainMenu)
 mainMenu.add_cascade(label = "이미지 효과", menu = imageMenu)
-mainMenu.add_command(label = "확대하기", command = func_expand)
-mainMenu.add_separator()
-mainMenu.add_command(label = "축소하기", command = func_reduce)
+imageMenu.add_command(label = "확대하기", command = func_expand)
+imageMenu.add_separator()
+imageMenu.add_command(label = "축소하기", command = func_reduce)
 
 window.mainloop()
